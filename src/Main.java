@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static final Scanner scanner = new Scanner(System.in);
-    private static final UserManager userManager = new UserManager();
+    private static Scanner scanner = new Scanner(System.in);
+    private static UserManager userManager = new UserManager();
     public static void main(String[] args) {
         userManager.addUser(new User("U001", "Alice", "alice@gmail.com", new Address("Hanoi", "123 A St", "100000", "Vietnam"), "0912345678"));
         userManager.addUser(new User("U002", "Bob", "bob@yahoo.com", new Address("Saigon", "456 B St", "700000", "Vietnam"), "0987654321"));
@@ -53,6 +53,21 @@ public class Main {
                     if(userList.isEmpty()){
                         System.out.println("Not found any user");
                     } else userList.forEach(System.out::println);
+                }
+                case ISUSERINCOUNTRY -> {
+                    System.out.print("Nhập id: ");
+                    String id = scanner.next();
+                    System.out.print("Nhập quốc gia: ");
+                    scanner.nextLine();
+                    String country = scanner.nextLine();
+                    if (userManager.isUserFromCountry(id, country)){
+                        System.out.println("Yes");
+                    }
+                    else System.out.println("No");
+                }
+                case GETUSERPHONENUMBER -> {
+                    String id = scanner.next();
+                    System.out.println(userManager.getUserPhoneNumber(id));
                 }
                 case EXIT -> {
                     isInUsed = false;

@@ -21,7 +21,7 @@ public class UserManager {
     public User addUser(User user) {
         findUserById(user.getId()).ifPresentOrElse(
                 existedUser -> {
-                    throw new RuntimeException("User Id already existed");
+                    System.out.println("User existed");
                 },
                 () -> {
                     users.add(user);
@@ -54,6 +54,11 @@ public class UserManager {
                 .filter(countryName -> countryName.equalsIgnoreCase(country))
                 .isPresent();
     }
+
+    public String getUserPhoneNumber(String id){
+        return findUserById(id).map(User::getPhoneNumber).orElse("No phone number");
+    }
+
 
     private static Optional<User> findUserById(String id){
         return users.stream().filter(user -> user.getId().equals(id)).findFirst();

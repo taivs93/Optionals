@@ -5,6 +5,8 @@ public enum Selection {
     FINDBYID(2,"Tìm user theo ID."),
     FINDBYCITY(3,"Tìm tất cả người dùng trong thành phố cụ thể."),
     FINDBYEMAIL(4,"Tìm tất cả người dùng theo email domain cụ thể."),
+    ISUSERINCOUNTRY(5,"Kiểm tra xem người dùng có ở quốc gia nào đó ko."),
+    GETUSERPHONENUMBER(6,"Lấy số điện thoại từ user"),
     EXIT(5,"Thoát.");
     private int value;
     private String description;
